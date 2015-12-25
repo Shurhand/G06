@@ -10,12 +10,12 @@ public class Question extends DomainEntity{
 	
 	public Question(){
 		super();
-		text="";
+		text = "";
 //		options=new ArrayList<String>();
 	}
 	//Methods
 	public Question(Survey s){
-		text="";
+		text = new String("");
 //		options=new ArrayList<String>();
 	}
 	public String getText(){
@@ -33,7 +33,7 @@ public class Question extends DomainEntity{
 
 	@Override
 	public String toString() {
-		return "Question [text=" + text + "]";
+		return "Question [text = " + text + "]";
 	}
 		
 	

@@ -1,7 +1,7 @@
 package services;
 
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import repositories.SurveyRepository;
 import domain.Survey;
+import repositories.SurveyRepository;
 @Service
 public class SurveyService {
 
@@ -39,7 +39,7 @@ public class SurveyService {
 		Assert.notNull(c);
 		Assert.notNull(survey);
 		
-		Assert.isTrue(survey.getCensus()==null);
+		Assert.isTrue(survey.getCensus() == null);
 		survey.setCensus(c);
 		surveyRepository.save(survey);
 		
@@ -48,7 +48,7 @@ public class SurveyService {
 	//Método de interacción con el subsistema de Visualización
 	public List<Survey>allFinishedSurveys(){
 		
-		Date now = new Date(System.currentTimeMillis());
+		LocalDate now = LocalDate.now();
 		List<Survey>res = surveyRepository.allFinishedSurveys(now);
 		return res;
 	}
@@ -67,7 +67,7 @@ public class SurveyService {
 		Assert.notNull(id);
 		Survey s = findOne(id);
 		
-		if(s.getCensus()==null){
+		if(s.getCensus() == null){
 			return true;
 		}else{
 			return false;

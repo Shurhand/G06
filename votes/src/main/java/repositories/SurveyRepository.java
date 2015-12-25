@@ -1,6 +1,7 @@
 package repositories;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +13,7 @@ import domain.Survey;
 public interface SurveyRepository extends JpaRepository<Survey,Integer>{
 	
 	@Query("select s from Survey s where ?1 = s.endDate")
-	public List<Survey>allFinishedSurveys(Date now);
+	public List<Survey>allFinishedSurveys(LocalDate now);
 	
 	@Query("select s from Survey s where ?1 = s.usernameCreator")
 	public List<Survey>allCreatedSurveys(String username);
