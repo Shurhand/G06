@@ -23,6 +23,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import domain.Census;
 import domain.CheckToken;
 import domain.Survey;
 
@@ -61,9 +62,10 @@ public class SurveyController {
 	// CREACION/ADMINISTRACION DE CENSO.
 	@RequestMapping(value = "/saveCensus", method = RequestMethod.GET)
 	public @ResponseBody void saveCensus(@RequestParam Integer surveyId,
-			@RequestParam Integer censusId) throws JsonParseException,
+			@RequestParam Census census) throws JsonParseException,
 			JsonMappingException, IOException {
-		surveyService.addCensus(surveyId, censusId);
+		
+		surveyService.addCensus(surveyId, census);
 	}
 
 	@RequestMapping(value = "/getcookies", method = RequestMethod.GET)

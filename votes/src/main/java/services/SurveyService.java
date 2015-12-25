@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Census;
 import domain.Survey;
 import repositories.SurveyRepository;
 @Service
@@ -34,7 +35,7 @@ public class SurveyService {
 		return surveyRepository.findOne(id);
 	}
 	//Método de interacción con el subsistema de Creacion de Censos
-	public void addCensus(Integer s, Integer c){
+	public void addCensus(Integer s, Census c){
 		Survey survey = findOne(s);
 		Assert.notNull(c);
 		Assert.notNull(survey);
