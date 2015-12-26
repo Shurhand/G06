@@ -2,6 +2,7 @@ package services;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,17 @@ public class SurveyService {
 		Assert.notNull(id);
 		return surveyRepository.findOne(id);
 	}
+	
+	public Collection<Survey> findAll(){
+		Collection<Survey> res = new LinkedList<>();
+		
+		res = surveyRepository.findAll();
+		Assert.notNull(res);
+		
+		return res;
+	}
 	//Método de interacción con el subsistema de Creacion de Censos
-	public void addCensus(Integer s, Census c){
+	public void addCensus(Integer s, Integer c){
 		Survey survey = findOne(s);
 		Assert.notNull(c);
 		Assert.notNull(survey);
@@ -75,7 +85,4 @@ public class SurveyService {
 		}
 	}
 
-	public Collection<Survey> allSurveys() {
-		return surveyRepository.findAll();
-	}
 }

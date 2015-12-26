@@ -13,6 +13,11 @@ public class Question extends DomainEntity{
 		text = "";
 //		options=new ArrayList<String>();
 	}
+	
+	public Question(String s){
+		super();
+		text = s;
+	}
 	//Methods
 	public Question(Survey s){
 		text = new String("");
@@ -25,7 +30,7 @@ public class Question extends DomainEntity{
 //		return options;
 //	}
 	public void setText(String text){
-		this.text=text;
+		this.text = text;
 	}
 //	public void setOptions(List<String> options){
 //		this.options=options;

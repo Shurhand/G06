@@ -30,7 +30,7 @@ public class Survey extends DomainEntity implements Serializable{
 	private String description;
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private Census census;
+	private Integer census;
 	
 	public Survey() {
 		super();
@@ -70,11 +70,11 @@ public class Survey extends DomainEntity implements Serializable{
 		this.endDate = endDate;
 	}
 	
-	public Census getCensus() {
+	public Integer getCensus() {
 		return census;
 	}
 
-	public void setCensus(Census census) {
+	public void setCensus(Integer census) {
 		this.census = census;
 	}
 
@@ -93,7 +93,7 @@ public class Survey extends DomainEntity implements Serializable{
 		this.usernameCreator = usernameCreator;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@NotEmpty
 	public Collection<Question> getQuestions() {
 		return questions;

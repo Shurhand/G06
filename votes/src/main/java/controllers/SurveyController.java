@@ -62,7 +62,7 @@ public class SurveyController {
 	// CREACION/ADMINISTRACION DE CENSO.
 	@RequestMapping(value = "/saveCensus", method = RequestMethod.GET)
 	public @ResponseBody void saveCensus(@RequestParam Integer surveyId,
-			@RequestParam Census census) throws JsonParseException,
+			@RequestParam Integer census) throws JsonParseException,
 			JsonMappingException, IOException {
 		
 		surveyService.addCensus(surveyId, census);
@@ -103,7 +103,7 @@ public class SurveyController {
 	// VISUALIZACION.
 	@RequestMapping(value = "/allSurveys", method = RequestMethod.GET)
 	public Collection<Survey> findAllSurveys() {
-		Collection<Survey> res = surveyService.allSurveys();
+		Collection<Survey> res = surveyService.findAll();
 		return res;
 	}
 
