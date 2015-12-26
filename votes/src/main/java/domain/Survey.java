@@ -34,6 +34,23 @@ public class Survey extends DomainEntity implements Serializable{
 	
 	public Survey() {
 		super();
+		
+		questions = new LinkedList<Question>();
+	}
+	
+	public Survey(String title, String description, LocalDate startDate,
+			LocalDate endDate, Integer census) {
+		super();
+		
+		checkFecha(startDate, endDate);
+		
+		this.title = title;
+		this.description = description;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.census = census;
+				
+		
 		questions = new LinkedList<Question>();
 	}
 	
@@ -57,9 +74,12 @@ public class Survey extends DomainEntity implements Serializable{
 	
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	public LocalDate getStartDate() {
-		return startDate;
+				return startDate;
 	}
 	public void setStartDate(LocalDate startDate) {
+		if(endDate != null){
+			checkFecha(startDate,endDate);
+		}
 		this.startDate = startDate;
 	}
 	@DateTimeFormat(pattern="yyyy/MM/dd")
@@ -67,6 +87,9 @@ public class Survey extends DomainEntity implements Serializable{
 		return endDate;
 	}
 	public void setEndDate(LocalDate endDate) {
+		if(startDate != null){
+			checkFecha(startDate,endDate);
+		}
 		this.endDate = endDate;
 	}
 	
@@ -114,6 +137,14 @@ public class Survey extends DomainEntity implements Serializable{
 		return "Survey [title=" + title + ", description=" + description
 				+ ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", census=" + census + ", questions=" + questions + "]";
+	}
+	
+	private void checkFecha(LocalDate f1, LocalDate f2){
+		
+		if(f2.isBefore(f1)){
+			throw new IllegalArgumentException("La fecha de fin no puede ir antes que la de inicio");
+		}
+		
 	}
 	
 	
