@@ -5,6 +5,8 @@
 <head>
 <style type="styles/bootstrap.css"></style>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="styles/font-awesome.css">
 
 </head>
 <body>
@@ -67,6 +69,7 @@
 							<label>Pregunta {{$index+1}}</label>
 							<input type="hidden" value='{{survey.questions[$index].type="question"}}' required>
 							<input name="survey" type="text" ng-model="survey.questions[$index].text" required/>
+							<button ng-click="deleteQuestionField()"><i class="fa fa-remove"></i></button>
 						</div>
 					</div>
 					<div class="col-xs-12">

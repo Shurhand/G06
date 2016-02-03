@@ -5,7 +5,8 @@
 <head>
 <style type="styles/bootstrap.css"></style>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
-
+<link rel="stylesheet" type="text/css" href="styles/font-awesome.css">
+<script type="text/javascript" src="scripts/bootstrap.js"></script>
 </head>
 <body>
 
@@ -44,9 +45,11 @@
 			<div class="col-xs-1"></div>
 			<div class="col-xs-10">
 				<div ng-controller="listController">
-					<ul>
-						<li ng-repeat="survey in surveys">{{survey.title}} | <span ng-click="borrar(survey)" style="cursor:pointer">Borrar</span> | <span ng-click="goEditCensus(survey)" style="cursor:pointer">Editar Censo</span></li>
-					</ul>
+					<div class="btn-group btn-group">
+						<a type="button" class="btn btn-primary" ng-click="borrar(survey)" href="#">Borrar</a>
+					 	<a type="button" class="btn btn-primary" ng-click="goEditCensus(survey)" href="#">Editar Censo</a>
+					</div>
+					
 				</div>
 			</div>
 			<div class="col-xs-1"></div>
