@@ -1,6 +1,5 @@
 var cavControllers = angular.module("cavControllers", ['ngCookies','cavFactories']);
 cavControllers.controller('indexController', function($http,$rootScope, $cookieStore, $cookies, $getCookiesAngular){
-	$rootScope.title="Ágora@US";
 	var getCookiesAngular = $getCookiesAngular();
 	getCookiesAngular.then(function(result){
 		$rootScope.username=$cookieStore.get("angularUser");
@@ -8,7 +7,6 @@ cavControllers.controller('indexController', function($http,$rootScope, $cookieS
 	
 });
 cavControllers.controller('createController', function($scope, $http, $rootScope, $location, $cookieStore){
-	$rootScope.title="Crear votación";
 	$scope.qs=[];
 	$scope.i = 0;
 	$scope.survey={type:"survey", usernameCreator:$cookieStore.get("angularUser"), title:"",description:"",startDate:"",endDate:"",questions:[]};
@@ -39,7 +37,6 @@ cavControllers.controller('createController', function($scope, $http, $rootScope
 	}
 });
 cavControllers.controller('listController', function($scope, $http, $route, $rootScope){
-	$rootScope.title = "Lista de votaciones";
 	$http.get("vote/mine.do").success(function(data,status){
 		$scope.surveys = data;
 	});
