@@ -353,7 +353,7 @@
        <version>2.4</version>
        <configuration>
          <outputDirectory>webapps</outputDirectory>
-         <warName>ROOT</warName>
+         <warName>pepe</warName>
        </configuration>
      </plugin>
 
